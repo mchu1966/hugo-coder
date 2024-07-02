@@ -1,6 +1,7 @@
 {{ define "title" }}
   {{ .Title }} · {{ .Site.Title }}
 {{ end }}
+
 {{ define "content" }}
   <section class="container post">
     <article>
@@ -30,6 +31,13 @@
           {{ with .GetTerms "tags" }}{{ partial "taxonomy/tags.html" . }}{{ end }}
         </div>
       </header>
+
+      {{ if .Params.havetoc }}
+        <div>
+          <h1>Table of Contents</h1>
+          {{ .TableOfContents }}
+        </div>
+      {{ end }}
 
       <div class="post-content">
         {{ if .Params.featuredImage }}
